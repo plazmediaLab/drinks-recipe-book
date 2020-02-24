@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+// Contex
+import CategoriasProvider from './contex/CategoriasContex.js';
+import RecetasProvider from './contex/RecetasContex.js';
+// Components
+import Cubetron from './components/Cubetron';
+import Formulario from './components/Formulario';
+import ListaRecetas from './components/ListaRecetas';
 
 function App() {
+  
+  // STATE
+  const [error, guardarError] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CategoriasProvider>
+      <RecetasProvider>
+
+        <Cubetron />
+
+        <div className="container">
+          <Formulario 
+            guardarError={guardarError}
+          />
+
+          {error ? <p className="msn msn-s-cancel"><i className="a-warning"></i>&nbsp; All fields are requires</p> : null}
+
+          <hr />
+
+          <ListaRecetas />
+          
+        </div>
+
+      </RecetasProvider>
+    </CategoriasProvider>
   );
 }
 
