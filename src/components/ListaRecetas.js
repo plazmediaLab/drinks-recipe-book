@@ -15,7 +15,10 @@ const ListaRecetas = () => {
   return (
     <div className="grid-container" id="mansory-layout" columns="4">
       {receta.map(item => (
-        <Receta key={item.idDrink}/>
+        <Receta 
+          key={item.idDrink}
+          receta={receta}
+        />
       ))}
     </div>
   );

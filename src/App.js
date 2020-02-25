@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 // Contex
 import CategoriasProvider from './contex/CategoriasContex.js';
 import RecetasProvider from './contex/RecetasContex.js';
+import ModalProvider from './contex/ModalContex.js';
 // Components
 import Cubetron from './components/Cubetron';
 import Formulario from './components/Formulario';
@@ -15,22 +16,24 @@ function App() {
   return (
     <CategoriasProvider>
       <RecetasProvider>
+        <ModalProvider>
 
-        <Cubetron />
+          <Cubetron />
 
-        <div className="container">
-          <Formulario 
-            guardarError={guardarError}
-          />
+          <div className="container">
+            <Formulario 
+              guardarError={guardarError}
+            />
 
-          {error ? <p className="msn msn-s-cancel"><i className="a-warning"></i>&nbsp; All fields are requires</p> : null}
+            {error ? <p className="msn msn-s-cancel"><i className="a-warning"></i>&nbsp; All fields are requires</p> : null}
 
-          <hr />
+            <hr />
 
-          <ListaRecetas />
-          
-        </div>
+            <ListaRecetas />
+            
+          </div>
 
+        </ModalProvider>
       </RecetasProvider>
     </CategoriasProvider>
   );

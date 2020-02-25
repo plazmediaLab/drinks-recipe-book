@@ -1,7 +1,0 @@
-select,
-option{
-    color: var(--texto-color);
-}
-option:first-child{
-    color: var(--gray-70);
-}
