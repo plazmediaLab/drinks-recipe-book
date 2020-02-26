@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useState } from "react";
 import styled from "@emotion/styled";
 import Modal from "react-modal";
+
 // Contex
 import { ModalContex } from "../contex/ModalContex";
 
@@ -31,6 +32,7 @@ const DivGrid = styled.div`
   }
 
   @media (min-width: 589px) {
+
     width: 50vw;
   }
 `;
@@ -38,6 +40,7 @@ const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   padding: 1rem 2rem;
+
 
   h3 {
     width: 100%;
@@ -100,6 +103,7 @@ const Receta = ({ receta }) => {
     console.log(ingredientes);
     return ingredientes;
   };
+
 
   return (
     <Fragment>
