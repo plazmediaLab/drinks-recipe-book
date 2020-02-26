@@ -8,7 +8,7 @@ const ModalProvider = (props) => {
 
   // STATE
   const [idreceta, guardarIdReceta] = useState(null);
-  const [receta, guardarReceta] = useState({});
+  const [informacion, guardarInformacion] = useState({});
 
   // useEFFECT
   useEffect(() => {
@@ -19,7 +19,7 @@ const ModalProvider = (props) => {
 
       const consulta = await axios.get(url);
 
-      guardarReceta(consulta.data.drinks[0]);
+      guardarInformacion(consulta.data.drinks[0]);
     };
     handleReceta()
   }, [idreceta]);
@@ -27,7 +27,9 @@ const ModalProvider = (props) => {
   return (
     <ModalContex.Provider
       value={{
-        guardarIdReceta
+        informacion,
+        guardarIdReceta,
+        guardarInformacion
       }}
     >
       {props.children}
