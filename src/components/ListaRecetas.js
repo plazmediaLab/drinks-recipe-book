@@ -10,7 +10,7 @@ const ListaRecetas = () => {
   // CONTEX
   const {receta} = useContext(RecetasContex);
   
-  if(Object.keys(receta).length === 0) return null;
+  if(!receta) return null;
 
   return (
     <div className="grid-container" id="mansory-layout" columns="4">

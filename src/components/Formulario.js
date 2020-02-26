@@ -1,55 +1,51 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from "react";
 // Contex
-import {CategoriasContex} from '../contex/CategoriasContex.js';
-import {RecetasContex} from '../contex/RecetasContex.js';
-
+import { CategoriasContex } from "../contex/CategoriasContex.js";
+import { RecetasContex } from "../contex/RecetasContex.js";
 
 const Formulario = ({ guardarError }) => {
-
   // STATE
   const [busqueda, gusardarBusqueda] = useState({
-    ingrediente: '',
-    categoria: ''
+    ingrediente: "",
+    categoria: ""
   });
-  
-  // CONTEX
-  const {categorias} = useContext(CategoriasContex);
-  const {guardarBusqueda} = useContext(RecetasContex);
 
-  const handleDatosReceta = e => { 
+  // CONTEX
+  const { categorias } = useContext(CategoriasContex);
+  const { guardarBusqueda } = useContext(RecetasContex);
+
+  const handleDatosReceta = e => {
     gusardarBusqueda({
       ...busqueda,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   // Submit
-  const DatosSubmit = (e) => {
+  const DatosSubmit = e => {
     e.preventDefault();
 
-    if(busqueda.ingrediente === '' || busqueda.categoria === ''){
+    if (busqueda.ingrediente === "" || busqueda.categoria === "") {
       // Activar Error
       guardarError(true);
-      return
+      return;
     }
     // Desactivar Error
     guardarError(false);
-    
-    // Mandar datos al CONTEX de Recetas
-    guardarBusqueda(busqueda)
 
-  }
+    // Mandar datos al CONTEX de Recetas
+    guardarBusqueda(busqueda);
+  };
 
   return (
-    <form 
-      className=" vm-4"
-      onSubmit={DatosSubmit}
-    >
-      <h3 className="txt-a-c font-1 txt-primary">Search by ingredient or category</h3>
-      <hr className="vm-4"/>
+    <form className=" vm-4" onSubmit={DatosSubmit}>
+      <h3 className="txt-a-c font-1 txt-primary">
+        Search by ingredient or category
+      </h3>
+      <hr className="vm-4" />
       <div className="col-row gap-1">
         <div className="col-4">
-          <input 
+          <input
             type="text"
             className="input-100"
             name="ingrediente"
@@ -58,10 +54,17 @@ const Formulario = ({ guardarError }) => {
           />
         </div>
         <div className="col-4">
-          <select className="input-100" name="categoria" onChange={handleDatosReceta} value={busqueda.categoria}>
-            <option value=''>-- Select category --</option>
+          <select
+            className="input-100"
+            name="categoria"
+            onChange={handleDatosReceta}
+            value={busqueda.categoria}
+          >
+            <option value="">-- Select category --</option>
             {categorias.map(item => (
-              <option key={item.strCategory} value={item.strCategory}>{item.strCategory}</option>
+              <option key={item.strCategory} value={item.strCategory}>
+                {item.strCategory}
+              </option>
             ))}
           </select>
         </div>
@@ -75,4 +78,4 @@ const Formulario = ({ guardarError }) => {
   );
 };
 
-export default Formulario
+export default Formulario;

@@ -13,7 +13,7 @@ const RecetasProvider = (props) => {
     categoria: ''
   });
 
-  
+
   // useEffect
   useEffect(() => {
     const {ingrediente, categoria} = busqueda
